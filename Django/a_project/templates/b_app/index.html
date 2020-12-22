@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- the use of {% now 'U' %} will helps to update CSS everytime by generating random timestamp  -->
+    <!-- <link rel="stylesheet" href="../../static/css/my_styles.css?{% now 'U' %}"> -->
+    <!-- the other way of representing css is given below
+        but need to use ctrl+F5 to update CSS because of cache -->
+    <!-- <link rel="stylesheet" href="{% static 'css/my_styles.css' %}"> -->
+    <!-- The other way with reloading pages -->
+    <link rel="stylesheet" href="{% static 'css/my_styles.css' %}?{% now 'U' %}" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Static files Django</title>
+</head>
+
+<body>
+    <h1>How to insert static to html using python</h1>
+    <img src="{% static 'images/staticimages.jpg' %}" alt="Not able to load" srcset="" />
+    <p>Below is a Database</p>
+    <!-- viewing db values from view.py using template tagging given beow -->
+    <div class="tables">
+        {% if access_records %}
+        <table>
+            <thead>
+                <th>id</th>
+                <th>id And Date</th>
+                <th>Site Name</th>
+                <th>Date Accessed</th>
+            </thead>
+            {% for i in access_records %}
+            <tr>
+                <!-- this "{{ forloop.counter0 }}" is help to count used as indexing -->
+                <td>{{ forloop.counter0 }}</td>
+                <td>{{ forloop.counter0 }}, &nbsp; <b>{{ i }}</b></td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No Access Record</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
