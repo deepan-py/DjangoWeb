@@ -11,5 +11,12 @@
     <!-- the 'a_app' is given in urls.py of a_app folder -->
     <!-- the other represents the name='other' that is given in the urls.py of app folder -->
     <a href="{% url 'a_app:other' %}">Link to other using Template Tag</a>
+    <!-- the admin will aleays imported in django -->
+    <!-- need to do migrations for this step of ading admin template tagging -->
+    <br>
+    <a href="{% url 'admin:index' %}">Link to admin</a>
+    <br>
+    <!-- linking to homepage -->
+    <a href="{% url 'index' %}">Link to homepage</a>
 </body>
 </html>
