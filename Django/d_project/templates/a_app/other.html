@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- link for  -->
+{% extends "a_app/base.html" %}
+
+{% block body_block %}
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>other</title>
+    <title>Other</title>
 </head>
-<body>
-    <h1>OTHER HTML</h1>
-</body>
-</html>
+
+<h1>OTHER HTML</h1>
+<h2>Example for template inheritance</h2>
+<p>The base html is inherited from base.html</p>
+{% endblock %}
+{% block head_block %}
+{% endblock %}

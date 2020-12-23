@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- this will not appear in other.html title -->
+    {% block head_block %}
     <title>Base</title>
+    {% endblock %}
 </head>
+
 <body>
-    <h1>BASE HTML</h1>
+
+    <nav class="navbar navbar-light bg-light navbar-expand-lg">
+        <div class="container-fluid">
+            <a href="" class="navbar-brand">Navbar</a>
+
+            <ul>
+                <li><a href="{% url 'index' %}" class="navbar-brand">INDEX</a></li>
+                <li class="nav-item"><a href="{% url 'admin:index' %}" class="nav-link">Admin</a></li>
+                <li><a class='nav-item' href="{% url 'a_app:other' %}">other</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>BASE HTML</h1>
+
+        {% block body_block %}
+        <!-- everything here will not be inherited to other html files other will be shown in other html files -->
+        <h1>This is not inherited</h1>
+        {% endblock %}
+
+    </div>
+
 </body>
+
 </html>
