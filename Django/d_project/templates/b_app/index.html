@@ -12,6 +12,11 @@
 {{ text | upper }}
 <br>
 {{ text | upper }}
+<br>
+<!-- below is a custom filter 
+in which create templatetags under app folder then add __init__.py and extrass.py
+in extrass.py import template from django and add a function name -->
+{{ text|cut:'h' }}
 
 </h1>
 
