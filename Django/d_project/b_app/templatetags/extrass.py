@@ -1,7 +1,7 @@
 from django import template
 
 register = template.Library()
-
+# this is decorators
 @register.filter(name='cut')
 
 def cut(value,arg):
@@ -11,5 +11,5 @@ def cut(value,arg):
     return value.replace(arg,'')
 
 # we can also use decorators
-# this a one way of registering template tag
+# this(below) a one way of registering template tag
 # register.filter('cut',cut)
