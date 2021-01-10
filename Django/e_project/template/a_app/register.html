@@ -10,8 +10,11 @@
     <h3>Fill the form</h3>
     <form action="" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
+
+        <!-- The user_form and profile_form is the name used in contxt og views.py -->
+
         {{ user_form.as_p }}
-        {{ priofile_form.as_p }}
+        {{ profile_form.as_p }}
         <input type="submit" value="Register">
     </form>
     {% endif %}

@@ -4,11 +4,11 @@ from a_app.models import UserProfileInfo
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-    class meta():
+    class Meta():
         model = User
         fields = ('username','email','password')
 
-class UserProfileInfo(forms.ModelForm):
-    class meta():
-        models=UserProfileInfo
-        fields = ('portfoloio_site','profile_pic')
+class UserProfileInfoForm(forms.ModelForm):
+    class Meta():
+        model=UserProfileInfo
+        fields = ('portfolio_site','profile_pic')

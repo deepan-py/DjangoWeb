@@ -9,12 +9,16 @@
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+        <div class="navbar">
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'index' %}" class="navbar-brand">DJANGO</a></li>
                 <li><a href="{% url 'admin:index' %}" class="navbar-link">ADMIN</a></li>
                 <li><a href="{% url 'a_app:register' %}" class="navbar-link">Register</a></li>
-
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" class="navbar-link">LOGOUT</a></li>
+                {% else %}
+                <li><a href="{% url 'a_app:user_login' %}" class="navbar-link">LOGIN</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
