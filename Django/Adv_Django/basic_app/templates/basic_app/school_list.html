@@ -1,0 +1,23 @@
+{% extends 'basic_app/basic_app_base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="container">
+    <h1>Welcome to a list of all The schools!</h1>
+
+    <ol>
+        {% comment %}
+        the comment tag is used to comment out the lines else while rendering it shows error even if we comment the line
+        in html format
+        for a single line comment use
+        {# .......... #}
+        <!-- {% for i in scl_list %} -->
+        {% endcomment %}
+        <!--? the above is used when view.py file does not have "context_object_name = 'schools'" -->
+        {% for i in schools %}
+        <h2>
+            <li><a href="{{i.id}}">{{ i.name }}</a></li>
+        </h2>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}
