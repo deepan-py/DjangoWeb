@@ -14,4 +14,6 @@ urlpatterns = [
     url(r'^createStudent/$', views.StudentCreateView.as_view(), name='createStudent'),
 
     url(r'^update/(?P<pk>\d+)/$', views.SchoolUpdateView.as_view(), name='update'),
+    url(r'^delete/(?P<pk>\d+)/$', views.SchoolDeleteView.as_view(), name='delete'),
+
 ]

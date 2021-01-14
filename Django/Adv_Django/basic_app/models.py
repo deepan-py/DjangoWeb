@@ -17,7 +17,7 @@ class School(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=256)
     age = models.PositiveIntegerField()
-    school = models.ForeignKey(School,related_name='students',on_delete=models.DO_NOTHING)
+    school = models.ForeignKey(School,related_name='students',on_delete=models.CASCADE)
     # the on_delete=models.CASCADE will delete the entry as well as its associate values
     # the on_delete=models.DO_NOTHING while deleting value if it has foreign key value in another table it cause FOREIGN_KEY error
     # on_delete=None will cause NoneType error 
@@ -25,5 +25,5 @@ class Student(models.Model):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse("basic_app:detail", kwargs={"pk": self.pk})
+        return reverse("basic_app:detail", kwargs={"pk": self.school.pk})
     
