@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-=======
-Django==2.2.13
->>>>>>> 1ca89807e712c227ebc554ff10dce4d00cf5afe8
 Faker==5.0.1
 Django==2.2.15
