@@ -14,6 +14,7 @@
         {% endcomment %}
         <!--? the above is used when view.py file does not have "context_object_name = 'schools'" -->
         {% for i in schools %}
+        {% comment %} {% for i in  %} {% endcomment %}
         <h2>
             <li><a href="{{i.id}}">{{ i.name }}</a></li>
         </h2>

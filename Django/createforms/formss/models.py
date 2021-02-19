@@ -23,11 +23,5 @@ class formsApp(models.Model):
     DateTimeOfEntry = models.DateTimeField(auto_now=True)
     gender = models.CharField(max_length=1,choices=gender_choices)
     gender_radio = models.CharField(choices=gender_choices, max_length=1,default='M')
-    imgesAdd = models.ImageField(upload_to = 'templates/images',blank=True)
+    imgesAdd = models.ImageField(upload_to = 'media/images/',blank=True,null=True)
     filesUpload = models.FileField(upload_to='templates/files',blank=True)
-
-    def image_tag(self):
-        return u'<img src="%s" />' % escape('/templates/images/')
-    image_tag.short_description = 'Imageid'
-    image_tag.allow_tags = True
-

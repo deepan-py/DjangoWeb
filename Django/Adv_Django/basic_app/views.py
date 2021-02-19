@@ -34,10 +34,10 @@ class SchoolListView(ListView):  # ListView it helps to link to html file
     # as the template_name is not mentioned here so the file name should be 'school_list.html'
 
 class SchoolDetailView(DetailView):
-    # by default it uses just lowercase as 'school' it does not add school_detail like previous
+    # by default it uses just lowercase as 'school_detail'
     context_object_name = 'school_detail'
     model = models.School
-    template_name = 'basic_app/scl_details.html'
+    # template_name = 'basic_app/scl_details.html'
 
 class SchoolCreateView(CreateView):
     # this will look for template name 'school_form.html' that is the moelname_form.html in our case the modelname is school lowercaps
@@ -55,3 +55,4 @@ class SchoolUpdateView(UpdateView):
 class SchoolDeleteView(DeleteView):
     model = models.School
     success_url = reverse_lazy('basic_app:list')
+    # the list is the name given in the urls.py

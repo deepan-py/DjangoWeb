@@ -10,9 +10,10 @@ from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy
 # Create your views here.
 
-
 class AboutView(TemplateView):
     template_name = 'appOne/about.html'
+    def get(self,request):
+        return render(request,'appOne/about.html',{'insert_me':'<will not convert to html code>'})
 
 
 class PostListView(ListView):
@@ -71,6 +72,7 @@ def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('post_detail', pk=pk)
+
 
 @login_required
 def add_comments_to_post(request, pk):
