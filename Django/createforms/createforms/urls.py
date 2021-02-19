@@ -24,4 +24,5 @@ urlpatterns = [
     # path(r'^$',include('formss.urls')),
     url(r'^$',views.index,name='index'),
     url(r'^formapp', views.formsapp,name='formapp'),
+    url(r'^form2',views.form2,name='form2')
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

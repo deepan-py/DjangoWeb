@@ -25,3 +25,11 @@ class formsApp(models.Model):
     gender_radio = models.CharField(choices=gender_choices, max_length=1,default='M')
     imgesAdd = models.ImageField(upload_to = 'media/images/',blank=True,null=True)
     filesUpload = models.FileField(upload_to='templates/files',blank=True)
+    
+    def __str__(self):
+        return self.first_name
+class form2(models.Model):
+    first_name = models.CharField(max_length=256, blank=True)
+    multipleChoices = models.ManyToManyField(formsApp)
+    def __str__(self):
+        return self.first_name

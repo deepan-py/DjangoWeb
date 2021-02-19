@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import formsApp
+from .models import form2, formsApp
 from django.utils.html import format_html
 # Register your models here.
+admin.site.register(form2)
 
 @admin.register(formsApp)
 class model1Admin(admin.ModelAdmin):
