@@ -1,29 +1,31 @@
 from django.shortcuts import render
-from a_app.forms import UserForm,UserProfileInfoForm
+from a_app.forms import UserForm, UserProfileInfoForm
 
-from django.contrib.auth import authenticate,login,logout
-from django.http import HttpResponseRedirect, HttpResponse 
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 def index(request):
-    return render(request,'a_app/index.html')
+    return render(request, 'a_app/index.html')
+
 
 @login_required
 def special(request):
     return HttpResponse('You are logged in')
+
 
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
-def register(request):
-    registered = False
 
-    if request.method=="POST":
+def register(request):
+    registered=False
+    if request.method == "POST":
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileInfoForm(data=request.POST)
 
@@ -39,40 +41,40 @@ def register(request):
 
             profile.save()
 
-            registered=True
+            registered = True
         else:
-            print(user_form.errors,profile_form.errors)
+            print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
-        profile_form=UserProfileInfoForm
-    return render(request,'a_app/register.html',
-                                            {
-                                              'user_form':user_form,
-                                              'profile_form':profile_form,
-                                              'registered':registered})
+        profile_form = UserProfileInfoForm
+    return render(request, 'a_app/register.html',
+                  {
+                      'user_form': user_form,
+                      'profile_form': profile_form,
+                      'registered': registered})
 
 
 # ---------------------------LOGIN-----------------------------------
 
 def user_login(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         # the username is used in login.html input field name='username'
         username = request.POST.get('username')
         # same for password which is used in html file
-        password= request.POST.get('password')
+        password = request.POST.get('password')
 
-        user = authenticate(username=username,password=password)
+        user = authenticate(username=username, password=password)
 
         if user:
             if user.is_active:
-                login(request,user)
+                login(request, user)
                 return HttpResponseRedirect(reverse('index'))
 
             else:
                 return HttpResponse('User Not Active')
         else:
             print('Someone tried to login and failed')
-            print("username: {} and password: {}".format(username,password))
+            print("username: {} and password: {}".format(username, password))
             return HttpResponse("Invalid login details")
     else:
-        return render(request,'a_app/login.html')
+        return render(request, 'a_app/login.html')

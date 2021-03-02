@@ -7,7 +7,7 @@
     {% if form.errors %}
     <p>Your username or password not match!</p>{% endif %}
 
-<form action="{% url 'login' %}" method="POSt">
+<form action="{% url 'login' %}" method="POST">
 {% csrf_token %}
 {{ form.as_p }}
 <input class="btn btn-primary" type="submit" value="Submit">

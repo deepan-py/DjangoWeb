@@ -1,7 +1,10 @@
 # Django
 ## Requirements
-*django, rest framework*
+*django, rest_framework*
 <hr>
+
+> Notes are related to the project files
+
 To create project
 
 ```shell
@@ -303,3 +306,30 @@ urlpatterns = [
     url(r'^formapp', views.formsapp,name='formapp'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # this line is used to get url to view the image in admin panel
 ```
+
+## `collectstatic`
+`python manage.py collectstatic`
+
+in `settings.py` file add `STATIC_ROOT='app/static'` that is path to collect static files <br>
+It will collect all the static files to that location including admin stati files
+
+## Changing admin templates
+go to django documentation `django/contrib/admin/templates/admin/*list of html files*`
+
+copy the desired html file code then create folder `app/templates/admin/file_name.html` then paste the code there and edit the files necessary
+
+## `admin.py`
+
+```python
+# modelname+admin is tthe class name
+class MovieAdmin(admin.ModelAdmin):
+    fields = ['release_year','title'.'length']  # fields of the model to change order
+    search_fields = ['title']  # to search something
+    list_filter = ['release_year','length']  # will display at the right side in admin site
+    list_display = ['release_year','title']  # will display list view in the view
+    list_editable = ['length']  # this can be edited
+
+    admin.site.register(models.Movie,MovieAdmin)
+```
+
+## `REST framework`
